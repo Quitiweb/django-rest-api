@@ -9,6 +9,9 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 pygments = "*"
+coreapi = "*"
+pyyaml = "*"
+coreapi-cli = "*"
 
 [requires]
 python_version = "3.7"
