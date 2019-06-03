@@ -12,6 +12,8 @@ pygments = "*"
 coreapi = "*"
 pyyaml = "*"
 coreapi-cli = "*"
+django-rest-auth = "*"
+djangorestframework-api-key = "*"
 
 [requires]
 python_version = "3.7"
