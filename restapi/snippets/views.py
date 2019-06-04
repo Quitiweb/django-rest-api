@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
-from rest_framework import generics, permissions, renderers
+from rest_framework import generics, permissions, renderers, authentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -47,9 +47,14 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class SnippetDetailAPI(APIView):
-    queryset = Snippet.objects.all()
+    # queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+    authentication_classes = (authentication.TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request, format=None):
+        codes = [snippet.code for snippet in Snippet.objects.filter(owner=request.user)]
+        return Response(codes)
 
 
 class UserList(generics.ListAPIView):
