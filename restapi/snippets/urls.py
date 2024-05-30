@@ -1,12 +1,13 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework.schemas import get_schema_view
+
 from snippets import views
 
 schema_view = get_schema_view(title='Pastebin API')
 
 urlpatterns = [
-    path('schema/', schema_view),
+    path('schema/', schema_view, name='schema'),
     path('snippets/', views.SnippetList.as_view(), name='snippet-list'),
     path('snippets/<int:pk>/', views.SnippetDetail.as_view(), name='snippet-detail'),
     path('snippets/api/', views.SnippetDetailAPI.as_view(), name='snippet-detail-api'),

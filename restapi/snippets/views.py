@@ -4,7 +4,7 @@ from rest_framework import generics, permissions, renderers, authentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework_api_key.permissions import HasAPIKey
+# from rest_framework_api_key.permissions import HasAPIKey
 
 from .models import Snippet
 from .serializers import SnippetSerializer, UserSerializer
@@ -31,7 +31,7 @@ def api_root(request, format=None):
 class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
-    permission_classes = [HasAPIKey]
+    # permission_classes = [HasAPIKey]
     # permission_classes = (permissions.IsAuthenticated,)
 
     def perform_create(self, serializer):
